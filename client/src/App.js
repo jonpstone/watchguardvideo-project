@@ -14,9 +14,9 @@ class App extends React.Component {
       frontTwo: "",
       rearOne: "",
       rearTwo: "",
-      day: '',
-      month: '',
-      year: '',
+      day: "",
+      month: "",
+      year: "",
     };
   }
 
@@ -48,9 +48,12 @@ class App extends React.Component {
           CameraTwo={this.state.frontTwo}
           CameraThree={this.state.rearOne}
           CameraFour={this.state.rearTwo}
+          Day={this.state.day}
+          Month={this.state.month}
+          Year={this.state.year}
         />
         <div className="imageForm">
-          <h1>SELECT DATE TO SEE NEW MARS ROVER IMAGE</h1>
+          <h1>ENTER DATE TO SEE NEW MARS ROVER IMAGE</h1>
           <form 
             id="comment-form"
             onSubmit={this.handleOnSubmit}>

@@ -27,3 +27,8 @@ body {
   right: 50%;
   transform: translate(50%);
 }
+
+#dateReminder {
+  margin-top: 4%;
+  text-align: center;
+}
