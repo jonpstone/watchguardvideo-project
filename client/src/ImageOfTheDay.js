@@ -1,15 +1,12 @@
 import React from 'react';
 
 const ImageOfTheDay = (props) => (
-  <div>
-    <div className="imageOftheDay">
-      <img className="imageOfTheDay__display" src={props.data.url} alt="NASA" />
-    </div>
-    <div className="imageOfTheDay__detail">
-      
-    </div>
+  <div className="imageOftheDay">
+    <img id="imageOfTheDay__display--one" src={props.CameraOne} alt="NASA1" />
+    <img id="imageOfTheDay__display--two" src={props.CameraTwo} alt="NASA2" />
+    <img id="imageOfTheDay__display--three" src={props.CameraThree} alt="NASA3" />
+    <img id="imageOfTheDay__display--four" src={props.CameraFour} alt="NASA4" />
   </div>
-
 );
 
 export default ImageOfTheDay;
