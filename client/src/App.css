@@ -14,7 +14,7 @@ body {
 .camImg {
   margin-top: 10%;
   height: 60vh;
-  width: 30rem;
+  width: 34.28rem;
 }
 
 .imageForm {
@@ -28,4 +28,8 @@ body {
 #dateReminder {
   margin-top: 4%;
   text-align: center;
+}
+
+#button {
+  margin-left: 2%;
 }

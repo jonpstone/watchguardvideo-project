@@ -2,9 +2,11 @@ import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
+import { Button } from 'semantic-ui-react'
 import ImageOfTheDay from './ImageOfTheDay';
 import './App.css';
 import 'react-dates/lib/css/_datepicker.css';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -37,9 +39,9 @@ class App extends React.Component {
       }));
   }
 
-  componentDidMount() {
-    this.dateParser();
-  }
+  // componentDidMount() {
+  //   this.dateParser();
+  // }
 
   handleOnChange(event)  {
     this.setState({
@@ -65,7 +67,7 @@ class App extends React.Component {
           Year={this.state.date.format('Y')}
         />
         <div className="imageForm">
-          <h1>ENTER DATE TO SEE MARS ROVER IMAGE</h1>
+          <h1>SELECT DATE TO SEE MARS ROVER IMAGE</h1>
           <form 
             onSubmit={this.handleOnSubmit}>
             <SingleDatePicker
@@ -76,7 +78,7 @@ class App extends React.Component {
               onFocusChange={({ focused }) => this.setState({ focused })}
               isOutsideRange={day => (moment().diff(day) < 0)}
             />
-            <button type="submit">Submit</button>
+            <Button id="button" type="submit">Submit</Button>
           </form>
         </div>
       </div>
