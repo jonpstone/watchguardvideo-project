@@ -22,8 +22,8 @@ Enter the directory `../watchguardvideo-project`
 
 ## CONTRIBUTING
 
-See [contributing](https://github.com/jonpstone/watchguardvideo-project/CONTRIBUTING.md).
+See [contributing](https://github.com/jonpstone/watchguardvideo-project/blob/master/CONTRIBUTING.md).
 
 ## LICENSING
 
-See [licensing](https://github.com/jonpstone/watchguardvideo-project/blob/master/LICENSE.md).
+See [licensing](https://github.com/jonpstone/watchguardvideo-project/blob/master/LICENSE).
