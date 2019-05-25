@@ -7,4 +7,23 @@ This was a project assigned to me by Watchguard Video for the purposes of techni
 ## DOWNLOAD AND INSTALL
 
 **SSH**
-git clone 
+git clone git@github.com:jonpstone/watchguardvideo-project.git
+
+**URL**
+git clone https://github.com/jonpstone/watchguardvideo-project.git
+
+## USAGE
+
+**Local Setup**
+Enter the directory `../watchguardvideo-project`
+
+**Start App**
+`cd client && yarn install && yarn start`
+
+## CONTRIBUTING
+
+See [contributing](https://github.com/jonpstone/watchguardvideo-project/CONTRIBUTING.md).
+
+## LICENSING
+
+See [licensing](https://github.com/jonpstone/watchguardvideo-project/blob/master/LICENSE.md).
