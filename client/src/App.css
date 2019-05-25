@@ -11,10 +11,7 @@ body {
   white-space: nowrap;
 }
 
-#imageOfTheDay__display--one,
-#imageOfTheDay__display--two,
-#imageOfTheDay__display--three,
-#imageOfTheDay__display--four {
+.camImg {
   margin-top: 10%;
   height: 60vh;
   width: 30rem;

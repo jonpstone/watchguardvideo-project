@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.css';
+import moment from 'moment';
+import 'react-dates/initialize';
+import { SingleDatePicker } from 'react-dates';
 import ImageOfTheDay from './ImageOfTheDay';
-
-const API_KEY = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
+import './App.css';
+import 'react-dates/lib/css/_datepicker.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +16,8 @@ class App extends React.Component {
       frontTwo: "",
       rearOne: "",
       rearTwo: "",
-      day: "",
-      month: "",
-      year: "",
+      date: moment(),
+      focused: false
     };
   }
 
@@ -28,7 +29,11 @@ class App extends React.Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-    const DATE = `earth_date=${this.state.year}-${this.state.month}-${this.state.day}&api_key=${API_KEY}`
+    const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
+    const DD = this.state.date.format('D');
+    const MM = this.state.date.format('M');
+    const YYYY = this.state.date.format('Y');
+    const DATE = `earth_date=${YYYY}-${MM}-${DD}&api_key=${API}`
     fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?${DATE}`)
       .then(response => response.json())
       .then(data => this.setState({ 
@@ -37,7 +42,6 @@ class App extends React.Component {
         rearOne: data.photos[2].img_src,
         rearTwo: data.photos[3].img_src,
       }));
-      document.getElementById("comment-form").reset();
   }
 
   render() {
@@ -48,35 +52,21 @@ class App extends React.Component {
           CameraTwo={this.state.frontTwo}
           CameraThree={this.state.rearOne}
           CameraFour={this.state.rearTwo}
-          Day={this.state.day}
-          Month={this.state.month}
-          Year={this.state.year}
+          Day={this.state.date.format('D')}
+          Month={this.state.date.format('M')}
+          Year={this.state.date.format('Y')}
         />
         <div className="imageForm">
-          <h1>ENTER DATE TO SEE NEW MARS ROVER IMAGE</h1>
+          <h1>ENTER DATE TO SEE MARS ROVER IMAGE</h1>
           <form 
-            id="comment-form"
             onSubmit={this.handleOnSubmit}>
-            <input
+            <SingleDatePicker
               required
-              name="month" 
-              type="text" 
-              placeholder=" Month e.g 1 to 12"
-              onChange={this.handleOnChange}
-            />
-            <input
-              required
-              name="day" 
-              type="text" 
-              placeholder = " Day e.g. 1 to 30"
-              onChange={this.handleOnChange}
-            />
-            <input
-              required
-              name="year" 
-              type="text" 
-              placeholder=" Year e.g. 2016"
-              onChange={this.handleOnChange}
+              date={this.state.date}
+              onDateChange={date => this.setState({ date })}
+              focused={this.state.focused}
+              onFocusChange={({ focused }) => this.setState({ focused })}
+              isOutsideRange={() => false}
             />
             <button type="submit">Submit</button>
           </form>
