@@ -39,9 +39,9 @@ class App extends React.Component {
       }));
   }
 
-  // componentDidMount() {
-  //   this.dateParser();
-  // }
+  componentDidMount() {
+    this.dateParser();
+  }
 
   handleOnChange(event)  {
     this.setState({
