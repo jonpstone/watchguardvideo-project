@@ -21,14 +21,7 @@ class App extends React.Component {
     };
   }
 
-  handleOnChange(event)  {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  handleOnSubmit(event) {
-    event.preventDefault();
+  dateParser() {
     const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
     const DD = this.state.date.format('D');
     const MM = this.state.date.format('M');
@@ -42,6 +35,21 @@ class App extends React.Component {
         rearOne: data.photos[2].img_src,
         rearTwo: data.photos[3].img_src,
       }));
+  }
+
+  componentDidMount() {
+    this.dateParser();
+  }
+
+  handleOnChange(event)  {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleOnSubmit(event) {
+    event.preventDefault();
+    this.dateParser();
   }
 
   render() {
@@ -66,7 +74,7 @@ class App extends React.Component {
               onDateChange={date => this.setState({ date })}
               focused={this.state.focused}
               onFocusChange={({ focused }) => this.setState({ focused })}
-              isOutsideRange={() => false}
+              isOutsideRange={day => (moment().diff(day) < 0)}
             />
             <button type="submit">Submit</button>
           </form>
