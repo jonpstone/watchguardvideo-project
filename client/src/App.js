@@ -7,7 +7,6 @@ import ImageOfTheDay from './ImageOfTheDay';
 import './App.css';
 import 'react-dates/lib/css/_datepicker.css';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +18,7 @@ class App extends React.Component {
       rearOne: "",
       rearTwo: "",
       date: moment(),
-      focused: false
+      focused: false,
     };
   }
 
@@ -39,10 +38,6 @@ class App extends React.Component {
       }));
   }
 
-  componentDidMount() {
-    this.dateParser();
-  }
-
   handleOnChange(event)  {
     this.setState({
       [event.target.name]: event.target.value
@@ -54,18 +49,27 @@ class App extends React.Component {
     this.dateParser();
   }
 
+  display() {
+    const msg = 'NO DATA FOUND \n PLEASE PICK A DATE'
+    const imagery = (
+      <ImageOfTheDay 
+        CameraOne={this.state.frontOne}
+        CameraTwo={this.state.frontTwo}
+        CameraThree={this.state.rearOne}
+        CameraFour={this.state.rearTwo}
+        Day={this.state.date.format('D')}
+        Month={this.state.date.format('M')}
+        Year={this.state.date.format('Y')}
+      />
+    )
+    return this.state.frontOne ? imagery : (
+      <h1 className="noneFound">{msg}</h1>
+    );
+  }
+
   render() {
     return (
       <div className="App">
-        <ImageOfTheDay 
-          CameraOne={this.state.frontOne}
-          CameraTwo={this.state.frontTwo}
-          CameraThree={this.state.rearOne}
-          CameraFour={this.state.rearTwo}
-          Day={this.state.date.format('D')}
-          Month={this.state.date.format('M')}
-          Year={this.state.date.format('Y')}
-        />
         <div className="imageForm">
           <h1>SELECT DATE TO SEE MARS ROVER IMAGE</h1>
           <form 
@@ -81,9 +85,9 @@ class App extends React.Component {
             <Button id="button" type="submit">Submit</Button>
           </form>
         </div>
+        {this.display()}
       </div>
     );
-  }
-}
+  }}
 
 export default App;
