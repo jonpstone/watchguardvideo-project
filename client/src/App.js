@@ -17,7 +17,7 @@ class App extends React.Component {
       frontTwo: "",
       rearOne: "",
       rearTwo: "",
-      date: moment(),
+      date: moment().subtract(1, 'day'),
       focused: false,
     };
   }
