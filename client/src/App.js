@@ -80,6 +80,7 @@ class App extends React.Component {
               onDateChange={date => this.setState({ date })}
               focused={this.state.focused}
               onFocusChange={({ focused }) => this.setState({ focused })}
+              numberOfMonths={3}
               isOutsideRange={day => (moment().diff(day) < 0)}
             />
             <Button id="button" type="submit">Submit</Button>
