@@ -8,10 +8,8 @@ import './App.css';
 import 'react-dates/lib/css/_datepicker.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
+  constructor() {
+    super();
     this.state = {
       frontOne: "",
       frontTwo: "",
@@ -22,7 +20,7 @@ class App extends React.Component {
     };
   }
 
-  dateParser() {
+  dateParser = () => {
     const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
     const DD = this.state.date.format('D');
     const MM = this.state.date.format('M');
@@ -38,19 +36,19 @@ class App extends React.Component {
       }));
   }
 
-  handleOnChange(event)  {
+  handleOnChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  handleOnSubmit(event) {
+  handleOnSubmit = (event) => {
     event.preventDefault();
     this.dateParser();
   }
 
   display() {
-    const msg = 'NO DATA FOUND \n PLEASE PICK A DATE'
+    const msg = 'PLEASE PICK A DATE'
     const imagery = (
       <ImageOfTheDay 
         CameraOne={this.state.frontOne}
