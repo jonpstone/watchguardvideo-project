@@ -20,6 +20,10 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.dateParser();
+  }
+
   dateParser = () => {
     const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
     const DD = this.state.date.format('D');
@@ -34,6 +38,7 @@ class App extends React.Component {
         rearOne: data.photos[2].img_src,
         rearTwo: data.photos[3].img_src,
       }));
+      return this.display();
   }
 
   handleOnChange = (event) => {
@@ -48,8 +53,7 @@ class App extends React.Component {
   }
 
   display = () => {
-    const msg = 'PLEASE PICK A DATE'
-    const imagery = (
+    return (
       <ImageOfTheDay 
         CameraOne={this.state.frontOne}
         CameraTwo={this.state.frontTwo}
@@ -60,9 +64,6 @@ class App extends React.Component {
         Year={this.state.date.format('Y')}
       />
     )
-    return this.state.frontOne ? imagery : (
-      <h1 className="noneFound">{msg}</h1>
-    );
   }
 
   render() {
