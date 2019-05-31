@@ -47,7 +47,7 @@ class App extends React.Component {
     this.dateParser();
   }
 
-  display() {
+  display = () => {
     const msg = 'PLEASE PICK A DATE'
     const imagery = (
       <ImageOfTheDay 
