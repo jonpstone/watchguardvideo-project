@@ -27,7 +27,11 @@ class App extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.setState({ errorMessage: "" });
+    this.setState(
+      (prevState, props) => {
+        return { errorMessage: !prevState.errorMessage}
+      }
+    );
     this.dateParser();
   }
 
