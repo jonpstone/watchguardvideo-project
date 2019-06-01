@@ -2,10 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 
-test('should render App correctly', () => {
+it('renders without crashing', () => {
+  shallow(<App />);
+});
+
+it('renders date selection message', () => {
   const wrapper = shallow(<App />);
-  expect(wrapper.find('h1').text()).toBe('SELECT DATE TO SEE MARS ROVER IMAGE');
-  // const renderer = new ReactShallowRenderer();
-  // renderer.render(<Header />);
-  // expect(renderer.getRenderOutput()).toMatchSnapshot();
+  const selectDate = <h1>SELECT DATE TO SEE MARS ROVER IMAGE</h1>;
+  // expect(wrapper.contains(selectDate)).toBe(true);
+  expect(wrapper.contains(selectDate)).toEqual(true);
 });
