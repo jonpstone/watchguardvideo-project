@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import 'react-dates/initialize';
-import { SingleDatePicker } from 'react-dates';
 import { Button } from 'semantic-ui-react'
 import ImageOfTheDay from './ImageOfTheDay';
-import './App.css';
+import { SingleDatePicker } from 'react-dates';
+import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -17,6 +17,7 @@ class App extends React.Component {
       rearTwo: "",
       date: moment().subtract(1, 'day'),
       focused: false,
+      errorMessage: "",
     };
   }
 
@@ -24,7 +25,13 @@ class App extends React.Component {
     this.dateParser();
   }
 
-  dateParser = () => {
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    this.setState({ errorMessage: "" });
+    this.dateParser();
+  }
+
+  dateParser() {
     const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
     const DD = this.state.date.format('D');
     const MM = this.state.date.format('M');
@@ -32,28 +39,25 @@ class App extends React.Component {
     const DATE = `earth_date=${YYYY}-${MM}-${DD}&api_key=${API}`
     fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?${DATE}`)
       .then(response => response.json())
-      .then(data => this.setState({ 
-        frontOne: data.photos[0].img_src,
-        frontTwo: data.photos[1].img_src,
-        rearOne: data.photos[2].img_src,
-        rearTwo: data.photos[3].img_src,
-      }));
-      return this.display();
+      .then(data => data.photos && data.photos.length ? 
+        this.setState({
+          frontOne: data.photos[0].img_src,
+          frontTwo: data.photos[1].img_src,
+          rearOne: data.photos[2].img_src,
+          rearTwo: data.photos[3].img_src,
+        }) : 
+        this.setState({
+          errorMessage: "NO DATA FOUND"
+        }
+      )
+    )
   }
 
-  handleOnChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  handleOnSubmit = (event) => {
-    event.preventDefault();
-    this.dateParser();
-  }
-
-  display = () => {
-    return (
+  display() {
+    return this.state.errorMessage ? 
+    (
+      <div className="errorMessage">{this.state.errorMessage}</div>
+    ) : (
       <ImageOfTheDay 
         CameraOne={this.state.frontOne}
         CameraTwo={this.state.frontTwo}
