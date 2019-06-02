@@ -15,11 +15,10 @@ class App extends React.Component {
       frontTwo: "",
       rearOne: "",
       rearTwo: "",
-      date: moment().subtract(1, 'day'),
+      date: moment(),
       focused: false,
       errorMessage: "",
     };
-    this.baseState = this.state
   }
 
   componentDidMount() {
@@ -28,7 +27,7 @@ class App extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.setState(this.baseState)
+    this.setState({ errorMessage: "" });
     this.dateParser();
   }
 
@@ -51,7 +50,7 @@ class App extends React.Component {
           errorMessage: "NO DATA FOUND"
         }
       )
-    )
+    );
   }
 
   display() {
@@ -69,7 +68,7 @@ class App extends React.Component {
         Month={this.state.date.format('M')}
         Year={this.state.date.format('Y')}
       />
-    )
+    );
   }
 
   render() {
@@ -86,9 +85,10 @@ class App extends React.Component {
               onDateChange={date => this.setState({ date })}
               focused={this.state.focused}
               onFocusChange={({ focused }) => this.setState({ focused })}
-              numberOfMonths={3}
+              numberOfMonths={6}
               isOutsideRange={day => (moment().diff(day) < 0)}
-              renderMonthElement={this.renderMonthElement}
+              initialVisibleMonth={() => moment().add('months', -5)}
+              showDefaultInputIcon
             />
             <Button id="button" type="submit">Submit</Button>
           </form>
