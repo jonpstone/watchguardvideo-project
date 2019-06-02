@@ -10,7 +10,7 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.state = this.initialState = {
       frontOne: "",
       frontTwo: "",
       rearOne: "",
@@ -19,6 +19,7 @@ class App extends React.Component {
       focused: false,
       errorMessage: "",
     };
+    this.baseState = this.state
   }
 
   componentDidMount() {
@@ -27,7 +28,7 @@ class App extends React.Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.setState({ errorMessage: "" })
+    this.setState(this.baseState)
     this.dateParser();
   }
 
@@ -87,6 +88,7 @@ class App extends React.Component {
               onFocusChange={({ focused }) => this.setState({ focused })}
               numberOfMonths={3}
               isOutsideRange={day => (moment().diff(day) < 0)}
+              renderMonthElement={this.renderMonthElement}
             />
             <Button id="button" type="submit">Submit</Button>
           </form>
