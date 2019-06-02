@@ -15,10 +15,13 @@ git clone https://github.com/jonpstone/watchguardvideo-project.git
 ## USAGE
 
 **Local Setup**
-Enter the directory `../watchguardvideo-project`
+Open a terminal and enter the directory `../watchguardvideo-project`
 
 **Start App**
 `cd client && yarn install && yarn start`
+
+**Test**
+Ensure functionality by running tests `yarn test`
 
 ## CONTRIBUTING
 
