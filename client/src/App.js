@@ -32,12 +32,12 @@ class App extends React.Component {
   }
 
   dateParser() {
-    const API = 'Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN';
-    const DD = this.state.date.format('D');
-    const MM = this.state.date.format('M');
-    const YYYY = this.state.date.format('Y');
-    const DATE = `earth_date=${YYYY}-${MM}-${DD}&api_key=${API}`
-    fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?${DATE}`)
+    const API = `earth_date=${
+        this.state.date.format('Y')}-${
+          this.state.date.format('M')}-${
+            this.state.date.format('D')
+              }&api_key=Eet08CsmxY27bMeZJKNogFLg49IjNtsMOdIbWiAN`
+    fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?${API}`)
       .then(response => response.json())
       .then(data => data.photos && data.photos.length ? 
         this.setState({
