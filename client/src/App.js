@@ -58,7 +58,8 @@ class App extends React.Component {
     (
       <div className="errorMessage">{this.state.errorMessage}</div>
     ) : (
-      <ImageOfTheDay 
+      <ImageOfTheDay
+        data-test="imageOfTheDay"
         CameraOne={this.state.frontOne}
         CameraTwo={this.state.frontTwo}
         CameraThree={this.state.rearOne}
@@ -76,7 +77,8 @@ class App extends React.Component {
         <div className="imageForm">
           <h1>SELECT DATE TO SEE MARS ROVER IMAGE</h1>
           <form 
-            onSubmit={this.handleOnSubmit}>
+            onSubmit={this.handleOnSubmit}
+            data-test="form">
             <SingleDatePicker
               required
               date={this.state.date}

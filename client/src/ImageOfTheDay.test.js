@@ -1,27 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-enzyme';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import ImageOfTheDay from './ImageOfTheDay';
-
-const setUp = (props={}) => {
-  const component = shallow(<ImageOfTheDay {...props} />);
-  return component;
-}
 
 describe('ImageOfTheDay', () => {
 
-  let component;
-  beforeEach(() => {
-    component = setUp();
-  });
-
-  it('renders without crashing', () => {
+  it('Renders without crashing', () => {
     shallow( <ImageOfTheDay /> );
   });
 
-  it('renders four instances of the camImg class', () => {
+  it('Renders four image elements', () => {
+    const component = shallow(<ImageOfTheDay />);
     const wrapper = component.find('.camImg');
     expect(wrapper.length).toBe(4);
   });
-
+  
 });
