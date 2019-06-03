@@ -13,10 +13,7 @@ class App extends React.Component {
     // Set initial state
     this.state = {
       // Mars Rover hazard avoidance cameras
-      frontOne: "",
-      frontTwo: "",
-      rearOne: "",
-      rearTwo: "",
+      cams: [],
       // Calendar attributes, initial date and focus set to false
       date: moment(),
       focused: false,
@@ -44,6 +41,7 @@ class App extends React.Component {
   dateParser() {
     // Variable containing the dynamically interpolated string to be added to
     // the API call, including date and auth key
+    const imgArray = [];
     const API = `earth_date=${
         this.state.date.format('Y')}-${
           this.state.date.format('M')}-${
@@ -54,12 +52,15 @@ class App extends React.Component {
       .then(response => response.json())
     // Ternary check for bad or missing data followed by setState call
     // depending on the result 
-      .then(data => data.photos && data.photos.length ? 
+      .then(data => data.photos && data.photos.length ?
+        imgArray.push(
+          data.photos[0].img_src, 
+          data.photos[1].img_src, 
+          data.photos[2].img_src,
+          data.photos[3].img_src,
+          ) &&
         this.setState({
-          frontOne: data.photos[0].img_src,
-          frontTwo: data.photos[1].img_src,
-          rearOne: data.photos[2].img_src,
-          rearTwo: data.photos[3].img_src,
+          cams: imgArray
         }) : 
         this.setState({
           errorMessage: "NO DATA FOUND"
@@ -77,16 +78,11 @@ class App extends React.Component {
     ) : (
     // If false it will render a child component with the hazard avoidance 
     // camera images passed in as props
+      <div data-test="imageOfTheDay">
       <ImageOfTheDay
-        data-test="imageOfTheDay"
-        CameraOne={this.state.frontOne}
-        CameraTwo={this.state.frontTwo}
-        CameraThree={this.state.rearOne}
-        CameraFour={this.state.rearTwo}
-        Day={this.state.date.format('D')}
-        Month={this.state.date.format('M')}
-        Year={this.state.date.format('Y')}
+        Cameras={this.state.cams}
       />
+      </div>
     );
   }
 

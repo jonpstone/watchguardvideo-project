@@ -9,7 +9,7 @@ const setUp = (props={}) => {
   return component;
 }
 
-describe('App', () => {
+describe('<App />', () => {
 
   describe('App rendering with relevant messages', () => {
     let wrapper;
@@ -21,17 +21,25 @@ describe('App', () => {
       const selectDate = <h1>SELECT DATE TO SEE MARS ROVER IMAGE</h1>;
       expect(wrapper.contains(selectDate)).toEqual(true);
     });
-
+    
     it('Renders the date selection form', () => {
       const component = findByTestArr(wrapper, 'form');
       expect(component.length).toBe(1);
     });
 
+  });
+
+  describe('Loads child components', () => {
+    let wrapper;
+    beforeEach(() => {
+      wrapper = setUp();
+    });
+    
     it('Renders inital image elements', () => {
       const component = findByTestArr(wrapper, 'imageOfTheDay');
       expect(component.length).toBe(1);
     });
 
-  });
+  })
 
 });
