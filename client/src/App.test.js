@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-enzyme';
 import App from './App';
+import { SingleDatePicker } from 'react-dates';
 import { findByTestArr } from '../utils';
 
 const setUp = (props={}) => {
@@ -39,6 +40,11 @@ describe('<App />', () => {
       const component = findByTestArr(wrapper, 'imageOfTheDay');
       expect(component.length).toBe(1);
     });
+
+    it('Renders react-dates SDP', () => {
+      const form = findByTestArr(wrapper, 'form');
+      expect(form.find(SingleDatePicker).length).toBe(1);
+    })
 
   })
 
