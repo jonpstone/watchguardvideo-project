@@ -18,6 +18,11 @@ body {
   width: 34.28rem;
 }
 
+.camImg:hover {
+  cursor: pointer;
+  transform: scale(.85);
+}
+
 .imageForm {
   text-align: center; 
   position: absolute;
