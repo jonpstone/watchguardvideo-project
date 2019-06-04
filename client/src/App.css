@@ -7,10 +7,6 @@ body {
   font-weight: 400;
 }
 
-.imageOfTheDay {
-  /* white-space: nowrap; */
-}
-
 .modalStyles {
   height: 900px;
   width: 900px;
