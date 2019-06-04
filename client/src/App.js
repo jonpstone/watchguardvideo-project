@@ -104,7 +104,7 @@ class App extends React.Component {
               onFocusChange={({ focused }) => this.setState({ focused })}
               numberOfMonths={6}
               isOutsideRange={day => (moment().diff(day) < 0)}
-              initialVisibleMonth={() => moment().add('months', -5)}
+              initialVisibleMonth = {() => moment().add(-5 , 'months')}
               showDefaultInputIcon
             />
             {/* Submit updates date and calls dateParser to fetch new data

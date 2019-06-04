@@ -8,12 +8,17 @@ body {
 }
 
 .imageOfTheDay {
-  white-space: nowrap;
+  /* white-space: nowrap; */
+}
+
+.modalStyles {
+  height: 900px;
+  width: 900px;
 }
 
 .camImg {
-  margin-top: 20vh;
-  height: 60vh;
+  margin-top: 26vh;
+  height: 34.28rem;
   width: 34.28rem;
 }
 
