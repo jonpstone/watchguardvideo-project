@@ -112,7 +112,7 @@ class App extends React.Component {
             />
             {/* Submit updates date and calls dateParser to fetch new data
             from the API */}
-            <Button id="button" type="submit">Submit</Button>
+            <br /><Button id="button" type="submit">Submit</Button>
           </form>
         </div>
         {this.display()}
