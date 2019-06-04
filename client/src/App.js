@@ -32,7 +32,10 @@ class App extends React.Component {
     event.preventDefault();
     // In the event that an error message is displayed for lack of data,
     // the error message is reset so it doesn't trigger in the display function
-    this.setState({ errorMessage: "" });
+    this.setState({ 
+      cams: [],
+      errorMessage: "" 
+    });
     // dateParser runs and fetches data, updating state and rerendering the
     // component and ultimately the display function
     this.dateParser();
