@@ -5,7 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ImageOfTheDay = (props) => (
   <div className="imageOftheDay">
-    {/* Iterate over props and render images using 3rd party lazy loader component and 
+    {/* Iterate over props, render images using 3rd party lazy loader component and 
         SemanticUI Modal component used for onClick functionality to render larger 
         selected image */}
     {props.Cameras.map((img) => (
