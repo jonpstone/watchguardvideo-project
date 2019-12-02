@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Calls date parser to retreive up to date images for inital render
+    // Calls date parser to retrieve up to date images for initial render
     this.dateParser();
   }
 
@@ -36,7 +36,7 @@ class App extends React.Component {
       cams: [],
       errorMessage: "" 
     });
-    // dateParser runs and fetches data, updating state and rerendering the
+    // dateParser runs and fetches data, updating state and rendering the
     // component and ultimately the display function
     this.dateParser();
   }
